@@ -5,15 +5,12 @@ import Typography from '@material-ui/core/Typography'
 
 const NavBar = () => {
     return(
-        <div>
-        <AppBar position="static">
-            <Toolbar>
-                <Typography variant="title" color="inherit">
-                Cosee Meal-Planer
-                </Typography>
-            </Toolbar>
-        </AppBar>
-        </div>
+        <nav className="navbar navbar-light bg-light">
+            <a className="navbar-brand" href="#">
+            <img src="logo.png" width="52" height="37" className="d-inline-block align-top" alt=""/>
+            Essensplaner
+            </a>
+        </nav>
     )
 }
 

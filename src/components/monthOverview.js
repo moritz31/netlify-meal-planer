@@ -1,46 +1,41 @@
 import React from 'react'
+import Navigation from './overview/navigation.js'
+import Overview from './overview/overview.js'
 import dateFns from 'date-fns'
+
 
 class MonthOverview extends React.Component {
 
-    state = {
-        currentMonth: new Date(),
-        selectedDate: new Date()
-    };
+    constructor() {
+        super();
 
-    renderDays() {
-        const { currentMonth, selectedDate } = this.state;
+        this.state = { 
+            currentMonth: new Date(),
+            selectedDate: new Date()
+        };
 
-        const monthStart = dateFns.startOfMonth(currentMonth);
-        const monthEnd = dateFns.endOfMonth(monthStart);
+        this.nextMonth = this.nextMonth.bind(this);
+        this.previousMonth = this.previousMonth.bind(this);
+    }
 
-        const dateFormat = "ddd D";
-        const rows = [];
+    nextMonth() {
+        this.setState({selectedDate: dateFns.addMonths(this.state.selectedDate,1)})
+        console.log(this.state.selectedDate)
+    }
 
-        let day = monthStart;
-        let formattedDate = "";
-        let dayOfWeek = "";
-
-        while (day <= monthEnd) {
-            formattedDate = dateFns.format(day, dateFormat);
-            dayOfWeek = dateFns.getDay(day);
-            rows.push(
-                <div className="row" key={day}>
-                {formattedDate}
-                </div>
-            );
-            day = dateFns.addDays(day, 1);
-        }
-        return <div className="body">{rows}</div>;    
+    previousMonth() {
+        this.setState({selectedDate: dateFns.subMonths(this.state.selectedDate,1)})
+        console.log(this.state.selectedDate)
     }
 
     render() {
         return(
             <div className="calendar">
-            {this.renderDays()}
+                <Navigation month={this.state.selectedDate} leftClick={this.previousMonth} rightClick={this.nextMonth}></Navigation>
+                <Overview month={this.state.selectedDate}></Overview>
             </div>
-        );
-    }    
+        )
+    }
 }
 
 export default MonthOverview;
