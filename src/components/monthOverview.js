@@ -20,12 +20,10 @@ class MonthOverview extends React.Component {
 
     nextMonth() {
         this.setState({selectedDate: dateFns.addMonths(this.state.selectedDate,1)})
-        console.log(this.state.selectedDate)
     }
 
     previousMonth() {
         this.setState({selectedDate: dateFns.subMonths(this.state.selectedDate,1)})
-        console.log(this.state.selectedDate)
     }
 
     render() {

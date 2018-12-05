@@ -1,17 +1,38 @@
 import React from 'react'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
+import { Button } from 'reactstrap'
+import LoginModal from './loginModal'
 
-const NavBar = () => {
-    return(
-        <nav className="navbar navbar-light bg-light">
-            <a className="navbar-brand" href="#">
-            <img src="logo.png" width="52" height="37" className="d-inline-block align-top" alt=""/>
-            Essensplaner
-            </a>
-        </nav>
-    )
+class NavBar extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
+            modal: false,
+        };
+
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        console.log('Set state: ' + this.state.modal)
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
+
+    render() {
+        return(
+            <nav className="navbar navbar-light bg-light">
+                <a className="navbar-brand" href="#">
+                <img src="logo.png" width="52" height="37" className="d-inline-block align-top" alt=""/>
+                Essensplaner
+                </a>
+                <Button onClick={this.toggle}>Login</Button>
+                <LoginModal modal={this.state.modal} toggle={this.toggle}></LoginModal>
+            </nav>
+        )
+    }
+    
 }
 
 export default NavBar;
