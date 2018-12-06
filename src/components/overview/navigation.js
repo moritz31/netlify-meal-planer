@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'reactstrap'
 import dateFns from 'date-fns'
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 class Navigation extends React.Component {
 

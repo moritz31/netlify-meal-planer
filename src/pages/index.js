@@ -8,6 +8,7 @@ import MonthOverview from '../components/monthOverview'
 class Index extends React.Component {
   state = {
     open: false,
+    authenticated: false,
   };
 
   handleClose = () => {

@@ -16,7 +16,6 @@ class Overview extends React.Component {
 
         let day = monthStart;
         let formattedDate = "";
-        let dayOfWeek = "";
 
         head.push(
             <thead>
@@ -30,7 +29,6 @@ class Overview extends React.Component {
 
         while (day <= monthEnd) {
             formattedDate = dateFns.format(day, dateFormat);
-            dayOfWeek = dateFns.getDay(day);
             rows.push(
                 <tr key={day}>
                     <td>{formattedDate}</td>
