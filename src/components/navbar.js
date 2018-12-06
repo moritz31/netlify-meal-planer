@@ -27,8 +27,13 @@ class NavBar extends React.Component {
                 <img src="logo.png" width="52" height="37" className="d-inline-block align-top" alt=""/>
                 Essensplaner
                 </a>
-                <Button onClick={this.toggle}>Login</Button>
-                <LoginModal modal={this.state.modal} toggle={this.toggle}></LoginModal>
+
+                {this.props.childProps.isAuthenticated
+                    ? <div></div>
+                    : <Button onClick={this.toggle}>Login</Button>
+                }
+                <LoginModal modal={this.state.modal} toggle={this.toggle} hasAuthenticated={this.props.childProps.userHasAuthenticated}></LoginModal>
+
             </nav>
         )
     }

@@ -8,7 +8,7 @@ import MonthOverview from '../components/monthOverview'
 class Index extends React.Component {
   state = {
     open: false,
-    authenticated: false,
+    isAuthenticated: false,
   };
 
   handleClose = () => {
@@ -23,11 +23,22 @@ class Index extends React.Component {
     });
   };
 
+  userHasAuthenticated = authenticated => {
+    this.setState({ isAuthenticated: authenticated });
+    console.log('Login state: ' + this.state.authenticated)
+  }
+
   render() {
+
+    const childProps = {
+      isAuthenticated: this.state.isAuthenticated,
+      userHasAuthenticated: this.userHasAuthenticated
+    };
+
     return (
         <Container>
-          <NavBar />
-          <MonthOverview />
+          <NavBar childProps={childProps} />
+          <MonthOverview childProps={childProps} />
         </Container>
     );
   }

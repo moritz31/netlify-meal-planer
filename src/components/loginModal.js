@@ -12,6 +12,7 @@ class LoginModal extends React.Component {
         this.state = {
             username: '',
             password: '',
+            falseLogin: false
         };
 
         this.handleInput = this.handleInput.bind(this);
@@ -31,9 +32,13 @@ class LoginModal extends React.Component {
             .then(user => {
                 console.log('Login sucessful!');
                 console.log(user);
+                this.props.hasAuthenticated(true);
                 this.props.toggle();
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err)
+                this.state.falseLogin = true;
+            });
     }
 
     render() {
@@ -41,6 +46,10 @@ class LoginModal extends React.Component {
             <Modal isOpen={this.props.modal} toggle={this.props.toggle}>
             <ModalHeader toggle={this.props.toggle}>Login</ModalHeader>
             <ModalBody>
+                {this.state.falseLogin
+                    ? <InputGroup>False Login</InputGroup>
+                    : <InputGroup></InputGroup>
+                }
                 <InputGroup>
                     <InputGroupAddon addonType="prepend">
                         <InputGroupText><FontAwesomeIcon icon="user" /></InputGroupText>
