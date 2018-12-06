@@ -1,6 +1,8 @@
 import React from 'react';
-import { Input, InputGroup, InputGroupAddon, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Input, InputGroup, InputGroupAddon,InputGroupText, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Auth } from 'aws-amplify'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 class LoginModal extends React.Component {
 
@@ -40,11 +42,15 @@ class LoginModal extends React.Component {
             <ModalHeader toggle={this.props.toggle}>Login</ModalHeader>
             <ModalBody>
                 <InputGroup>
-                    <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+                    <InputGroupAddon addonType="prepend">
+                        <InputGroupText><FontAwesomeIcon icon="user" /></InputGroupText>
+                    </InputGroupAddon>
                     <Input name='username' placeholder="username" onChange={this.handleInput} />
                 </InputGroup>
                 <InputGroup>
-                    <InputGroupAddon addonType="prepend">@</InputGroupAddon>
+                    <InputGroupAddon addonType="prepend">
+                        <InputGroupText><FontAwesomeIcon icon="key" /></InputGroupText>
+                    </InputGroupAddon>
                     <Input type='password' name='password' placeholder="password" onChange={this.handleInput} />
                 </InputGroup>
             </ModalBody>

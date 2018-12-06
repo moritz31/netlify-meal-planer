@@ -5,6 +5,10 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Amplify from "aws-amplify";
 import config from "./config";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faKey, faUser } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faKey, faUser)
 
 Amplify.configure({
     Auth: {
